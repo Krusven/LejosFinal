@@ -18,7 +18,8 @@ public class main {
 		}*/
 		//TranslationClassGoogle.translateText();
 		try {
-			StringToImageConverter.createImage("ABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			int fontsize = 15;
+			StringToImageConverter.createImage(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type", fontsize);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

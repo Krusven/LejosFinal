@@ -18,13 +18,17 @@ public class StringToImageConverter {
 	
 	String inputString;
 	
-	public static void createImage(String inputString) throws IOException{
+	public static BufferedImage createImage(String inputString, int fontsize) throws IOException{
         Integer width = 160;
         Integer height = 195;
-        Font font = new Font("Serif", Font.PLAIN, 15);
+        Font font = new Font("Serif", Font.PLAIN, fontsize);
         String content = inputString;
-        saveImage(createGraphics(width, height, content, font));
+        BufferedImage image = createGraphics(width, height, content, font);
+        saveImage(image);
+        return image;
 	}
+
+	
 	
 	
 	
@@ -32,7 +36,7 @@ public class StringToImageConverter {
 	public static BufferedImage createGraphics(Integer width, Integer height, String content, Font font) {
 		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	    Graphics2D g2 = (Graphics2D)bi.getGraphics();
-	    g2.setBackground(Color.GRAY);
+	    g2.setBackground(Color.WHITE);
 	    g2.clearRect(0, 0, width, height);
 	    g2.setPaint(Color.BLACK);
 	    FontRenderContext context = g2.getFontRenderContext();
@@ -69,6 +73,7 @@ public class StringToImageConverter {
 	
 	public static void drawLines(Graphics g, String content, Font font, double baseY) {
 		char[] charArray = content.toCharArray();
+		int fontsize = font.getSize();
 		
 		FontMetrics metrics = g.getFontMetrics(font);
 		int lineHeight = g.getFontMetrics(font).getHeight();
@@ -89,6 +94,10 @@ public class StringToImageConverter {
 				j++;
 				currentContent ="";
 				y += lineHeight;
+			}
+			if(y>=195) {
+				System.out.println("Sorry passt net! Neu versuchen mit anderem Font");
+				break;
 			}
 		}
 	}
