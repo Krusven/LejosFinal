@@ -23,6 +23,25 @@ public class main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/*
+		public void theFunktion() {
+			TheGraphics jojo = new TheGraphics();
+			try {
+				System.out.print(searchForColor(jojo.createImage(myInput.getInput())));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		public static int[] searchForColor(BufferedImage bi) {
+		    for (int x = 0; x < bi.getWidth(); ++x)
+			    for (int y = 0; y < bi.getHeight(); ++y) {
+			        if ((bi.getRGB(x, y) & 0x00FFFFFF) == 0x00000000)
+			        	return new int[]{x, y};
+			    }
+		    return null;
+		}
+	}*/
 		
 	}
 }
