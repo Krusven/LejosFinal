@@ -10,6 +10,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -39,17 +40,56 @@ public class StringToImageConverter {
 
 	    FontRenderContext context = g2.getFontRenderContext();
 	    Rectangle2D bounds = font.getStringBounds(content, context);
-	    double x = (width - bounds.getWidth()) / 2;
-	    System.out.print("X:" + x);
-	    double y = (height - bounds.getHeight()) / 2;
-	    System.out.print("Y:" + y);
+	    
+	    FontMetrics metrics = g2.getFontMetrics(font);
+	    int width2 = metrics.stringWidth( content );
+	    System.out.print("width FontMetrics" + width2);
+	    
+	    double x = (0);
+	    System.out.println("X:" + x);
+	    double y = (0);
+	    System.out.println("Y:" + y);
 	    double ascent = - bounds.getY();
+	    System.out.println("Ascent:" + ascent);
 	    double baseY = y + ascent;
+	    System.out.println("BaseY:" + baseY);
 
-	    g2.drawString(content, (int)x, (int)baseY);
+	    //g2.drawString(content, (int)x, (int)baseY);
+	    createStringArray(g2, content, font, baseY);
 	    g2.dispose();
 
 	    return bi;
+	}
+	public static void drawString(Graphics g, String content, int x, int y) {
+		
+	}
+	
+	public static void createStringArray(Graphics g, String content, Font font, double baseY) {
+		char[] charArray = content.toCharArray();
+		
+		FontMetrics metrics = g.getFontMetrics(font);
+		int lineHeight = g.getFontMetrics(font).getHeight();
+		int x = 0;
+		String currentContent = "";
+		double y = baseY;
+		ArrayList<String> subStrings = new ArrayList<String>();
+		for(int i = 0; i<charArray.length; i++) {
+			int j = 0;
+			if(j >=subStrings.size()) {
+				subStrings.add(j, "");
+			}
+			currentContent = subStrings.get(j);
+			currentContent += charArray[i];
+			subStrings.set(j, currentContent);
+			if(metrics.stringWidth(subStrings.get(j))>=158) {
+				y += lineHeight;
+				g.drawString(subStrings.get(j), x, (int)y);
+				j++;
+				currentContent ="";
+			}
+		}
+		
+		
 	}
 	public static BufferedImage drawPic1(String inputString) {
 		 //create String object to be converted to image

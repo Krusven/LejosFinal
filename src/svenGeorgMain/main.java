@@ -18,7 +18,7 @@ public class main {
 		}*/
 		//TranslationClassGoogle.translateText();
 		try {
-			StringToImageConverter.createImage("ABCDEFGHIT");
+			StringToImageConverter.createImage("ABCDEFGHITsdsgdfhasdoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
