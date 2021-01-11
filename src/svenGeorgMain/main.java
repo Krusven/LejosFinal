@@ -18,7 +18,7 @@ public class main {
 		}*/
 		//TranslationClassGoogle.translateText();
 		try {
-			StringToImageConverter.createImage("ABCDEFGHITsdsgdfhasdoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+			StringToImageConverter.createImage("ABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooABCDEFGHITsdsgdfhasdooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
