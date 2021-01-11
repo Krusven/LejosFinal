@@ -19,8 +19,9 @@ public class main {
 		TranslationClassGoogle.translateText();
 		
 	}
+}
+	/*
 	public void theFunktion() {
-		InputAndTranslate myInput = new InputAndTranslate();
 		TheGraphics jojo = new TheGraphics();
 		try {
 			System.out.print(searchForColor(jojo.createImage(myInput.getInput())));
@@ -37,4 +38,4 @@ public class main {
 		    }
 	    return null;
 	}
-}
+}*/

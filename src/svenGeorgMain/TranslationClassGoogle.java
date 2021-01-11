@@ -6,9 +6,13 @@ import com.google.cloud.translate.Translation;
 
 public class TranslationClassGoogle {
 	static Scanner scanner = new Scanner(System.in);
+	
+	
 	public static void translateText() {
+		String sourceLang = getSourceLang();
 		String userInput = getInput();
-		TranslateTheString(userInput, "de", "es");
+		String targetLang = getTargetLang();
+		TranslateTheString(userInput, sourceLang, targetLang);
 	}
 	
 	public static String getInput() {
@@ -22,17 +26,22 @@ public class TranslationClassGoogle {
 			}
 			userInput += " " + "\n" + theInput;	
 		}
-		System.out.println("Input has Ended and was: " + "\n" + userInput);
+		System.out.println("Input: " + userInput);
 		return userInput;
 	}
-	public static String getSourceInput() {
+	public static String getSourceLang() {
+		System.out.println("\n");
 		System.out.println("Enter the source Language:");
-		String userInput = "";
-		String theInput;
-		theInput=scanner.nextLine();
-		userInput += " " + "\n" + theInput;	
-		System.out.println("Input has Ended and was: " + "\n" + userInput);
-		return userInput;
+		String sourceLang = "";
+		sourceLang = scanner.nextLine();
+		return sourceLang;
+	}
+	public static String getTargetLang() {
+		System.out.println("\n");
+		System.out.println("Enter the target Language:");
+		String targetLang = "";
+		targetLang = scanner.nextLine();
+		return targetLang;
 	}
 	public static void TranslateTheString(String text, String sourceL, String targetL) {
 		Translate translate = TranslateOptions.getDefaultInstance().getService();
