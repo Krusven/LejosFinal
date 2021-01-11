@@ -1,4 +1,4 @@
-package svenGeorgMain;
+package workingLogic;
 
 import java.awt.Color;
 import java.awt.Font;

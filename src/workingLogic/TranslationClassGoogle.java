@@ -1,4 +1,4 @@
-package svenGeorgMain;
+package workingLogic;
 import java.util.Scanner;
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.TranslateOptions;

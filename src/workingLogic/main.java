@@ -1,6 +1,7 @@
-package svenGeorgMain;
+package workingLogic;
 import java.awt.Color;
 import java.awt.List;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class main {
 		//TranslationClassGoogle.translateText();
 		try {
 			int fontsize = 15;
-			ArrayList<Integer> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type", fontsize));
+			ArrayList<Point2D> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type", fontsize));
 			for(int i = 0; i < myArray.size(); i++) {
 				System.out.println(myArray.get(i));
 			}
