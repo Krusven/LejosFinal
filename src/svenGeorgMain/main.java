@@ -10,12 +10,13 @@ import plott3r.Roboter;
 
 public class main {
 	public static void main(String args[]) throws InterruptedException {
-		try {
+		/*try {
 			Roboter roboter = new Roboter(new RemoteEV3("10.0.1.1"));
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		TranslationClassGoogle.translateText();
 		
 	}
 	public void theFunktion() {

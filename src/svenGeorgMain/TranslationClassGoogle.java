@@ -1,12 +1,12 @@
+package svenGeorgMain;
 import java.util.Scanner;
-
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
 public class TranslationClassGoogle {
 	static Scanner scanner = new Scanner(System.in);
-	public static void main(String[] args) {
+	public static void translateText() {
 		String userInput = getInput();
 		TranslateTheString(userInput, "de", "es");
 	}
@@ -25,7 +25,7 @@ public class TranslationClassGoogle {
 		System.out.println("Input has Ended and was: " + "\n" + userInput);
 		return userInput;
 	}
-	/*public static String getSourceInput() {
+	public static String getSourceInput() {
 		System.out.println("Enter the source Language:");
 		String userInput = "";
 		String theInput;
@@ -33,7 +33,7 @@ public class TranslationClassGoogle {
 		userInput += " " + "\n" + theInput;	
 		System.out.println("Input has Ended and was: " + "\n" + userInput);
 		return userInput;
-	}*/
+	}
 	public static void TranslateTheString(String text, String sourceL, String targetL) {
 		Translate translate = TranslateOptions.getDefaultInstance().getService();
 
@@ -49,4 +49,3 @@ public class TranslationClassGoogle {
 	}
 	
 }
-///jkshdbfjkshdbfajshrfbgkas
