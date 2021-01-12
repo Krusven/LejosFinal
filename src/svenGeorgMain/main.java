@@ -2,6 +2,7 @@ package svenGeorgMain;
 import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.awt.List;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import lejos.hardware.Sound;
 import lejos.remote.ev3.RemoteEV3;
 import lejos.utility.Delay;
 import plott3r.Roboter;
+import workingLogic.CoordinateSearcher;
+import workingLogic.TranslationClassGoogle;
 
 public class main {
 	public static void main(String args[]) throws InterruptedException {
@@ -23,7 +26,7 @@ public class main {
 		String translatedText = TranslationClassGoogle.translateText();
 		try {
 			int fontsize = 15;
-			ArrayList<Integer> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(translatedText, fontsize));
+			ArrayList<Point2D> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(translatedText, fontsize));
 			for(int i = 0; i < myArray.size(); i++) {
 				System.out.println(myArray.get(i));
 			}
