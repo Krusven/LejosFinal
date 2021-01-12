@@ -13,7 +13,8 @@ import lejos.utility.Delay;
 public class Roboter {
 
 //0,0 und 160, 200 im Koordinatensystem
-
+	private static RemoteEV3 EV3;
+	private static String ip = "10.0.1.1";
 	public static void main(String[] args) throws Throwable {
 		new Roboter(new RemoteEV3("10.0.1.1"));
 	
@@ -39,7 +40,7 @@ public class Roboter {
 		currentPosition = new Position3D(0, 0, false);
 
 		System.out.println("starting...");
-		try {
+		/*try {
 			Sound.beep();
 
 			resetX();
@@ -66,7 +67,7 @@ public class Roboter {
 			xAchse.close();
 			yAchse.close();
 			zAchse.close();
-		}
+		}*/
 
 	}
 

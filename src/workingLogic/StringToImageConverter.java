@@ -26,7 +26,7 @@ public class StringToImageConverter {
         Integer height = 195;
         //Font.decode(inputString);
         addFont();
-        System.out.print(Font.decode(inputString));
+        //System.out.print(Font.decode(inputString));
         Font font = new Font("Arial", Font.PLAIN, fontsize);
         String content = inputString;
         BufferedImage image = createGraphics(width, height, content, font);
@@ -89,11 +89,11 @@ public class StringToImageConverter {
 	
 	public static double getY(Rectangle2D bounds) {
 		 double y = (0);
-		    System.out.println("Y:" + y);
+		    //System.out.println("Y:" + y);
 		    double ascent = - bounds.getY();
-		    System.out.println("Ascent:" + ascent);
+		    //System.out.println("Ascent:" + ascent);
 		    double baseY = y + ascent;
-		    System.out.println("BaseY:" + baseY);
+		    //System.out.println("BaseY:" + baseY);
 		    return baseY;
 	}
 	

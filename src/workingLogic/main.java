@@ -15,7 +15,8 @@ import plott3r.Roboter;
 public class main {
 	public static void main(String args[]) throws InterruptedException {
 		try {
-			Roboter roboter = new Roboter(new RemoteEV3("10.0.1.1"));
+			RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
+			plott3r.Roboter roboter = new Roboter(remoteev3);
 			int fontsize = 15;
 			String translatedText = TranslationClassGoogle.translateText();
 			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of t 1500s galley of type", fontsize));
@@ -31,7 +32,7 @@ public class main {
 			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of t 1500s galley of type", fontsize));
 			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
 			CoordinatePrinter.markLine(myArrayList);
-			listCoordinates(myArrayList);
+			//listCoordinates(myArrayList);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
