@@ -1,5 +1,6 @@
 package svenGeorgMain;
 import java.awt.Color;
+import java.awt.GraphicsEnvironment;
 import java.awt.List;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,10 +19,11 @@ public class main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		//TranslationClassGoogle.translateText();
+		
+		String translatedText = TranslationClassGoogle.translateText();
 		try {
 			int fontsize = 15;
-			ArrayList<Integer> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type", fontsize));
+			ArrayList<Integer> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(translatedText, fontsize));
 			for(int i = 0; i < myArray.size(); i++) {
 				System.out.println(myArray.get(i));
 			}
@@ -30,6 +32,14 @@ public class main {
 			e.printStackTrace();
 		}
 		
+	}
+	public static void listFont() {
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		String []fontFamilies = ge.getAvailableFontFamilyNames();
+        for (int i = 0; i <fontFamilies.length; i++) 
+        {
+            System.out.println(fontFamilies[i]);
+        }
 	}
 }
 	
