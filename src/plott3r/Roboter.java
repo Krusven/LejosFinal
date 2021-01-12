@@ -13,21 +13,21 @@ import lejos.utility.Delay;
 public class Roboter {
 
 //0,0 und 160, 200 im Koordinatensystem
-	private static RemoteEV3 EV3;
-	private static String ip = "10.0.1.1";
-	public static void main(String[] args) throws Throwable {
-		new Roboter(new RemoteEV3("10.0.1.1"));
-	
-
-		
-	}
 
 	private Position3D currentPosition;
 
 	private MultiPositionAchse xAchse = null;
 	private MultiPositionAchse yAchse = null;
 	public DualPositionAchse zAchse = null;
-
+	public MultiPositionAchse getxAchse() {
+		return xAchse;
+	}
+	public MultiPositionAchse getyAchse() {
+		return yAchse;
+	}
+	public DualPositionAchse getzAchse() {
+		return zAchse;
+	}
 	public Roboter(RemoteEV3 ev3) throws Throwable {
 		xAchse = new MultiPositionAchse(ev3, new TouchSensor(ev3, "S1", "EV3TouchSensor", "Touch"), "A", 'L',
 				Einbaurichtung.REGULAER, new Reifen(40.0),
@@ -40,12 +40,10 @@ public class Roboter {
 		currentPosition = new Position3D(0, 0, false);
 
 		System.out.println("starting...");
-		/*try {
 			Sound.beep();
-
 			resetX();
 			resetY();
-
+/*try{
 			Sound.beep();
 			Sound.buzz();
 			moveToPosition(new Position3D(160, 0, true), 40);
@@ -132,7 +130,7 @@ public class Roboter {
 		Delay.msDelay(200);
 		xAchse.stop();
 		this.currentPosition = new Position3D(0, 0, false);
-		this.resetTachoCounts();
+		//this.resetTachoCounts();
 	}
 
 	public void moveToPosition(Position2D position2D, int mmSec) throws InterruptedException, RemoteException {

@@ -49,7 +49,7 @@ public class CoordinatePrinter {
 				}
 			}
 		}catch (Exception e){
-			System.out.println("index out of bounds");
+			
 		}
 		
 		System.out.println(newCoordinateList);

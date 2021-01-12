@@ -13,31 +13,26 @@ import lejos.utility.Delay;
 import plott3r.Roboter;
 
 public class main {
-	public static void main(String args[]) throws InterruptedException {
+	public static void main(String args[]) throws Throwable {
+		//RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
+		//plott3r.Roboter roboter = new Roboter(remoteev3);
 		try {
-			RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
-			plott3r.Roboter roboter = new Roboter(remoteev3);
-			int fontsize = 15;
-			String translatedText = TranslationClassGoogle.translateText();
-			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of t 1500s galley of type", fontsize));
+			
+			//is simply dummy text of t 1500s galley of type
+			String translatedText = "Hallo mein name ist Georg und ich bin blöd";//TranslationClassGoogle.translateText();
+			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(translatedText, 25));
 			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
-
+			//Sketcher.drawCoordinateArray(myNewArrayList, roboter);
 
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			//roboter.getxAchse().close();
+			//roboter.getyAchse().close();
+			//roboter.getzAchse().close();
 		}
-		try {
-			int fontsize = 15;
-			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of t 1500s galley of type", fontsize));
-			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
-			CoordinatePrinter.markLine(myArrayList);
-			//listCoordinates(myArrayList);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
 	public static void listFont() {

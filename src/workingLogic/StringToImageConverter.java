@@ -25,7 +25,7 @@ public class StringToImageConverter {
         Integer width = 160;
         Integer height = 195;
         //Font.decode(inputString);
-        addFont();
+        //addFont();
         //System.out.print(Font.decode(inputString));
         Font font = new Font("Arial", Font.PLAIN, fontsize);
         String content = inputString;
@@ -59,14 +59,16 @@ public class StringToImageConverter {
 	public static BufferedImage createGraphics(Integer width, Integer height, String content, Font font) {
 		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	    Graphics2D g2 = (Graphics2D)bi.getGraphics();
-	    g2.setBackground(Color.WHITE);
+	    g2.setBackground(Color.GRAY);
 	    g2.clearRect(0, 0, width, height);
 	    g2.setPaint(Color.BLACK);
 	    FontRenderContext context = g2.getFontRenderContext();
 	    
 	    double baseY = getY(getBounds(font, content, context));
+	    String noSpace = content;
+	    noSpace = noSpace.replaceAll(" ", "");
 
-	    if(getLanguageType(content)) {
+	    if(getLanguageType(noSpace)) {
 	    	drawLinesWords(g2, content, font, baseY);
 	    } else {
 	    	drawLinesCharacter(g2, content, font, baseY);
@@ -79,21 +81,20 @@ public class StringToImageConverter {
 	
 	
 	public static boolean getLanguageType(String language) {
-		if(language.matches("[a-zA-Z0-9]+")) {
+		if(language.matches("\\p{IsLatin}+")) {
 			return true;
+		} else {
+			return false;
 		}
-		return false;
+		
 	}
 	
 	
 	
 	public static double getY(Rectangle2D bounds) {
-		 double y = (0);
-		    //System.out.println("Y:" + y);
+		
 		    double ascent = - bounds.getY();
-		    //System.out.println("Ascent:" + ascent);
-		    double baseY = y + ascent;
-		    //System.out.println("BaseY:" + baseY);
+		    double baseY = 0 + ascent;
 		    return baseY;
 	}
 	
@@ -106,7 +107,8 @@ public class StringToImageConverter {
 	
 	
 	
-	public static void drawLinesCharacter(Graphics g, String content, Font font, double baseY) {
+	public static void drawLinesCharacter(Graphics2D g, String content, Font font, double baseY) {
+		System.out.println("CharacterLine");
 		char[] charArray = content.toCharArray();
 		int fontsize = font.getSize();
 		
@@ -136,7 +138,9 @@ public class StringToImageConverter {
 			}
 		}
 	}
-	public static void drawLinesWords(Graphics g, String content, Font font, double baseY) {
+	public static void drawLinesWords(Graphics2D g, String content, Font font, double baseY) {
+		System.out.println("WordLine");
+		System.out.println(content);
 		String[] wordArray = content.split(" ");
 		int fontsize = font.getSize();
 		
@@ -148,27 +152,31 @@ public class StringToImageConverter {
 		ArrayList<String> subStrings = new ArrayList<String>();
 		int j = 0;
 		for(int i = 0; i<wordArray.length; i++) {
+			
 			if(j >=subStrings.size()) {
 				subStrings.add(j, "");
 			}
-			if(metrics.stringWidth(subStrings.get(j))>=135 && metrics.stringWidth(subStrings.get(j))<=145 && metrics.stringWidth(wordArray[j])>15) {
+			System.out.println("Substring j: "+subStrings.get(j));
+			if(metrics.stringWidth(subStrings.get(j))>=150 && metrics.stringWidth(wordArray[j])>15) {
 				g.drawString(subStrings.get(j), x, (int)y);
 				currentContent ="";
 				y += lineHeight;
-			}else if(metrics.stringWidth(subStrings.get(j))>=145) {
+			/*}else if(metrics.stringWidth(subStrings.get(j))>=145) {
 				g.drawString(subStrings.get(j), x, (int)y);
 				currentContent ="";
-				y += lineHeight;
+				y += lineHeight;*/
 			} else {
 				currentContent = subStrings.get(j);
-				currentContent += wordArray[i];
+				currentContent += " " + wordArray[i];
+				System.out.println(currentContent);
 				subStrings.set(j, currentContent);
-				if(metrics.stringWidth(subStrings.get(j))>=145) {
+				if(metrics.stringWidth(subStrings.get(j))<=145) {
 					g.drawString(subStrings.get(j), x, (int)y);
 					j++;
 					currentContent ="";
 					y += lineHeight;
 				}
+				
 			}
 			if(y>=195) {
 				System.out.println("Sorry passt net! Neu versuchen mit anderem Font");
@@ -180,7 +188,7 @@ public class StringToImageConverter {
 	
 	
 	public static void saveImage(BufferedImage buffImg) {
-		 String fileName = "Image";
+		 String fileName = "omage";
          File newFile = new File("./" + fileName + ".jpeg");
          try {
 			ImageIO.write(buffImg, "png", newFile);
