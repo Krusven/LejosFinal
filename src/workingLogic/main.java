@@ -20,8 +20,8 @@ public class main {
 		try {
 			
 			//is simply dummy text of t 1500s galley of type
-			String translatedText = "Hallo mein name ist Georg und ich bin blöd";//TranslationClassGoogle.translateText();
-			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(translatedText, 25));
+			//String translatedText = TranslationClassGoogle.translateText();
+			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(TextToImage.createImage("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ante orci, ultrices nec pulvinar in, facilisis eu elit. Pellentesque elit dui, blandit ac consectetur ut, viverra a velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent porta, turpis eu condimentum ultricies, est dui sodales magna, a fringilla dolor urna eget tellus. Pellentesque dui augue, feugiat eu tortor vel, imperdiet pharetra est. Duis ultricies massa quis cursus lacinia. Duis sagittis tortor quis quam efficitur iaculis. Donec nisi nisl, convallis et faucibus molestie, convallis at enim. Mauris efficitur, nisl pellentesque euismod suscipit, augue massa malesuada sapien, eu pellentesque leo sapien eu urna. Morbi justo sem, consectetur ac pharetra eu, venenatis ac dui. Proin a ante nulla." ));
 			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
 			//Sketcher.drawCoordinateArray(myNewArrayList, roboter);
 

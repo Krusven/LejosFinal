@@ -9,7 +9,7 @@ import plott3r.Position3D;
 import plott3r.Roboter;
 
 public class Sketcher {
-	//lol
+	
 	public static void drawLine(Point2D point2d, Point2D point2d2, Roboter roboter) throws RemoteException, InterruptedException {
 		
 		int startX =(int) point2d.getX();
@@ -47,8 +47,5 @@ public class Sketcher {
 			}
 		}
 	}
-	
-	
-	//lol
 	
 }
