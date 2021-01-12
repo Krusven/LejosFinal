@@ -25,7 +25,7 @@ public class Roboter {
 
 	private MultiPositionAchse xAchse = null;
 	private MultiPositionAchse yAchse = null;
-	private DualPositionAchse zAchse = null;
+	public DualPositionAchse zAchse = null;
 
 	public Roboter(RemoteEV3 ev3) throws Throwable {
 		xAchse = new MultiPositionAchse(ev3, new TouchSensor(ev3, "S1", "EV3TouchSensor", "Touch"), "A", 'L',
@@ -134,11 +134,11 @@ public class Roboter {
 		this.resetTachoCounts();
 	}
 
-	private void moveToPosition(Position2D position2D, int mmSec) throws InterruptedException, RemoteException {
+	public void moveToPosition(Position2D position2D, int mmSec) throws InterruptedException, RemoteException {
 		this.moveToPosition(new Position3D(position2D, this.zAchse.isAktiv()), mmSec);
 	}
 
-	private void moveToPosition(Position3D position, int mmSec) throws InterruptedException, RemoteException {
+	public void moveToPosition(Position3D position, int mmSec) throws InterruptedException, RemoteException {
 		if (position.isZ())
 			this.zAchse.aktiviere();
 		else
@@ -197,7 +197,7 @@ public class Roboter {
 		this.xAchse.resetTachoCount();
 		this.yAchse.resetTachoCount();
 		if (xAchse.getTachoCount() != 0 || yAchse.getTachoCount() != 0)
-			throw new RuntimeException("Konnte Tachocount nicht zurücksetzen");
+			throw new RuntimeException("Konnte Tachocount nicht zurï¿½cksetzen");
 	}
 
 	public void stop() throws RemoteException {

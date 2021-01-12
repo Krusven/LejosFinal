@@ -22,10 +22,15 @@ public class main {
 		//TranslationClassGoogle.translateText();
 		try {
 			int fontsize = 15;
-			ArrayList<Point2D> myArray = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type", fontsize));
-			for(int i = 0; i < myArray.size(); i++) {
-				System.out.println(myArray.get(i));
-			}
+			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(StringToImageConverter.createImage(" is simply dummy text of t 1500s galley of type", fontsize));
+			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
+			CoordinatePrinter.markLine(myArrayList);
+//			for(int i = 0; i < myArrayList.size(); i++) {
+//				System.out.println(myArrayList.get(i));
+//			}
+//			for(int i = 0; i < myNewArrayList.size(); i++) {
+//				System.out.println(myNewArrayList.get(i));
+//			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
