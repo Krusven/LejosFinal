@@ -11,7 +11,7 @@ import lejos.remote.ev3.RemoteEV3;
 import lejos.utility.Delay;
 
 public class Roboter {
-
+	//lol
 //0,0 und 160, 200 im Koordinatensystem
 
 	private Position3D currentPosition;

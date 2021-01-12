@@ -13,6 +13,7 @@ import lejos.utility.Delay;
 import plott3r.Roboter;
 
 public class main {
+	//lol
 	public static void main(String args[]) throws Throwable {
 		//RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
 		//plott3r.Roboter roboter = new Roboter(remoteev3);

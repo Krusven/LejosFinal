@@ -3,7 +3,7 @@ package workingLogic;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
+//lol
 public class CoordinateSearcher {
 	
 	public static ArrayList<Point2D> searchForColor(BufferedImage bufferedImage) {

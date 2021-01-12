@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class CoordinatePrinter {
-
+//lol
 	public static void coordinateToLine (ArrayList<Point2D> coordinateList) { 
 		
 		for(int i=0; i<coordinateList.size(); i++) {
