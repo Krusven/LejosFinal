@@ -86,6 +86,7 @@ public class TranslationClassGoogle {
 				System.out.println("Please enter something!");
 				targetLanguage = scanner.nextLine();
 			}
+			main.setTargetLang(targetLanguage);
 			return targetLanguage;
 		} else {
 			
@@ -95,6 +96,7 @@ public class TranslationClassGoogle {
 				System.out.println("Please enter something!");
 				targetLanguage = scanner.nextLine();
 			}
+			main.setTargetLang(targetLanguage);
 			return targetLanguage;
 		}
 	}

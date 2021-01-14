@@ -11,8 +11,8 @@ import lejos.remote.ev3.RemoteEV3;
 import lejos.utility.Delay;
 
 public class Roboter {
-	//lol
-//0,0 und 160, 200 im Koordinatensystem
+
+// Rand: x= 0-160, y=0-195
 
 	private Position3D currentPosition;
 
@@ -43,7 +43,11 @@ public class Roboter {
 			Sound.beep();
 			resetX();
 			resetY();
-/*try{
+
+	}
+	public void zeichneRand() throws Throwable {
+		try{
+			
 			Sound.beep();
 			Sound.buzz();
 			moveToPosition(new Position3D(160, 0, true), 40);
@@ -52,21 +56,15 @@ public class Roboter {
 			moveToPosition(new Position3D(0, 0, true), 40);
 			zAchse.deaktiviere();
 
-
-//			System.out.println("moving position...");
-//			Position3D pos = new Position3D(150.0, 0.0, false);
-//			moveToPosition(pos, 50);
-
 			System.out.println("done...");
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			xAchse.close();
-			yAchse.close();
-			zAchse.close();
-		}*/
-
+			this.xAchse.close();
+			this.yAchse.close();
+			this.zAchse.close();
+		}
 	}
 
 	private void bereitePapierVor() throws InterruptedException {
@@ -105,7 +103,7 @@ public class Roboter {
 		xAchse.stop();
 		xAchse.rotateMm(-160);
 		this.currentPosition = new Position3D(0, 0, false);
-		this.resetTachoCounts();
+		//this.resetTachoCounts();
 	}
 
 	public void resetY() throws RemoteException {
