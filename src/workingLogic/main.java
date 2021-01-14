@@ -22,7 +22,8 @@ public class main {
 			
 			String translatedText = "Ich werde ihm ein Angebot machen, das er nicht ablehnen kann."; //TranslationClassGoogle.translateText();
 			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(TextToImage.createImage(translatedText));
-			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
+			ArrayList<Point2D> myNewArrayListX = CoordinatePrinter.markLineX(myArrayList);
+			ArrayList<Point2D> myNewArrayListY = CoordinatePrinter.markLineY(myArrayList);
 			//Sketcher.drawCoordinateArray(myNewArrayList, roboter);
 
 		} catch (Throwable e) {
