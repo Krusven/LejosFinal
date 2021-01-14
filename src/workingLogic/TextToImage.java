@@ -32,7 +32,7 @@ public class TextToImage {
 	public static BufferedImage createGraphics(String inputString) {
 		
 		BufferedImage bufferedImage = new BufferedImage(160, 195, BufferedImage.TYPE_INT_RGB);
-		Font font = new Font("Arial", Font.BOLD, 20);
+		Font font = new Font("Hiragino Sans GB" , Font.BOLD, 50);
 	    Graphics2D graphics2D = prepareGraphics(bufferedImage, font);
 	    double baseY = getY(getBounds(font, inputString, graphics2D));
 	    
@@ -51,7 +51,6 @@ public class TextToImage {
 		
 	    double ascent = - bounds.getY();
 	    double baseY = 0 + ascent;
-	    System.out.println(baseY);
 	    return baseY;
 	}
 	
@@ -78,11 +77,8 @@ public class TextToImage {
 			    Arrays.asList("zh", "km", "my", "ja", "tl", "lo", "ne", "ml", "th", "zh-TW"));
 	   
     	if(languageList.contains(main.targetLang)) {
-    		System.out.println("false");
     		return false;
     	} else {
-    		System.out.println("true");
-
     		return true;
     	}
 	    

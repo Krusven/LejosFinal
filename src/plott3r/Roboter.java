@@ -12,7 +12,7 @@ import lejos.utility.Delay;
 
 public class Roboter {
 
-// Rand: x= 0-160, y=0-195
+// Rand: x= 0-160, y=0-190
 
 	private Position3D currentPosition;
 
@@ -43,6 +43,7 @@ public class Roboter {
 			Sound.beep();
 			resetX();
 			resetY();
+			
 
 	}
 	public void zeichneRand() throws Throwable {
@@ -51,8 +52,8 @@ public class Roboter {
 			Sound.beep();
 			Sound.buzz();
 			moveToPosition(new Position3D(160, 0, true), 40);
-			moveToPosition(new Position3D(160, 195, true), 40);
-			moveToPosition(new Position3D(160, 195, true), 40);
+			moveToPosition(new Position3D(160, 190, true), 40);
+			moveToPosition(new Position3D(0, 190, true), 40);
 			moveToPosition(new Position3D(0, 0, true), 40);
 			zAchse.deaktiviere();
 
@@ -103,7 +104,7 @@ public class Roboter {
 		xAchse.stop();
 		xAchse.rotateMm(-160);
 		this.currentPosition = new Position3D(0, 0, false);
-		//this.resetTachoCounts();
+		this.resetTachoCounts();
 	}
 
 	public void resetY() throws RemoteException {
@@ -128,7 +129,7 @@ public class Roboter {
 		Delay.msDelay(200);
 		xAchse.stop();
 		this.currentPosition = new Position3D(0, 0, false);
-		//this.resetTachoCounts();
+		this.resetTachoCounts();
 	}
 
 	public void moveToPosition(Position2D position2D, int mmSec) throws InterruptedException, RemoteException {
@@ -152,10 +153,14 @@ public class Roboter {
 		double speedY = mmSec / factor;
 		speedY = xDiff == 0 ? 100 : speedY;
 
-		final Boolean[] motorState = new Boolean[2];
+		/*final Boolean[] motorState = new Boolean[2];
 		for (int i = 0; i < motorState.length; i++)
-			motorState[i] = false;
-		new AsyncMotor(0, xAchse, xDiff, speedX, new Callback<Integer>() {
+			motorState[i] = false;*/
+		xAchse.setSpeed(speedX);
+		xAchse.rotateMm(xDiff);
+		yAchse.setSpeed(speedY);
+		yAchse.rotateMm(yDiff);
+		/*new AsyncMotor(0, xAchse, xDiff, speedX, new Callback<Integer>() {
 
 			@Override
 			public void callFinish(Integer index) {
@@ -173,7 +178,7 @@ public class Roboter {
 		while (!motorsFinished(motorState) && couter < 100) {
 			Thread.sleep(100L);
 			couter++;
-		}
+		}*/
 
 		xAchse.getMotor().waitComplete();
 		yAchse.getMotor().waitComplete();
