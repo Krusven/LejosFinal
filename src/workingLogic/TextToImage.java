@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
-
+//lol
 public class TextToImage {
 	/* - Bold und Schriftgröße neue Breite 
 	 * - Sondersprachen eigenen Font
@@ -108,7 +108,7 @@ public class TextToImage {
 		String currentContent = "";
 		double leftTopCornerLine = baseY;
 		
-		if(fontMetrics.stringWidth(content)<=175) {
+		if(fontMetrics.stringWidth(content)<=165) {
 			graphics2D.drawString(content, leftBorder, (int)leftTopCornerLine);
 		} else {
 		
@@ -130,8 +130,7 @@ public class TextToImage {
 							leftTopCornerLine += lineHeight;
 						}
 					} else {
-						int contentWidth = fontMetrics.stringWidth(currentContent);
-						if(futureLength<=165) {
+						if(futureLength<=160) {
 							currentContent +=wordArray[i] + " ";
 							if(i==wordArray.length-1) {
 								graphics2D.drawString(currentContent, leftBorder, (int)leftTopCornerLine);
@@ -180,7 +179,6 @@ public class TextToImage {
 						leftTopCornerLine += lineHeight;
 					}
 				} else {
-					int contentWidth = fontMetrics.stringWidth(currentContent);
 					if(futureLength<=165) {
 						currentContent += characterArray[i];
 						if(i==characterArray.length-1) {

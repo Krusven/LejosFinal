@@ -11,26 +11,26 @@ import lejos.hardware.Sound;
 import lejos.remote.ev3.RemoteEV3;
 import lejos.utility.Delay;
 import plott3r.Roboter;
-
+//lol
 public class main {
-	static String targetLang;
+	static String targetLang = "de";
 	public static void main(String args[]) throws Throwable {
-		RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
-		plott3r.Roboter roboter = new Roboter(remoteev3);
+		//RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
+		//plott3r.Roboter roboter = new Roboter(remoteev3);
 		
 		try {
 			
-			String translatedText = TranslationClassGoogle.translateText();
+			String translatedText = "Ich werde ihm ein Angebot machen, das er nicht ablehnen kann."; //TranslationClassGoogle.translateText();
 			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(TextToImage.createImage(translatedText));
 			ArrayList<Point2D> myNewArrayList = CoordinatePrinter.markLine(myArrayList);
-			Sketcher.drawCoordinateArray(myNewArrayList, roboter);
+			//Sketcher.drawCoordinateArray(myNewArrayList, roboter);
 
 		} catch (Throwable e) {
 			e.printStackTrace();
 		} finally {
-			roboter.getxAchse().close();
-			roboter.getyAchse().close();
-			roboter.getzAchse().close();
+			//roboter.getxAchse().close();
+			//roboter.getyAchse().close();
+			//roboter.getzAchse().close();
 		}
 		
 		
