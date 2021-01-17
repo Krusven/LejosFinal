@@ -8,6 +8,12 @@ public class TranslationClassGoogle {
 	
 	static Scanner scanner = new Scanner(System.in);
 	
+	
+	/**
+	 * Aufruf der Methoden
+	 * 
+	 * @return übersetzten Text
+	 */
 	public static String translateText() {
 		
 		String sourceLanguage = getSourceLanguage();
@@ -20,6 +26,12 @@ public class TranslationClassGoogle {
 		return translatedInput;
 	}
 	
+	
+	/**
+	 * Fordert Benutzer auf die Quellsprache einzugeben
+	 * 
+	 * @return Quellsprache
+	 */
 	public static String getSourceLanguage() {
 		
 		System.out.println("Enter the source language  (type \"help\" for a list of language often used ISO-639-1-Codes):");
@@ -59,6 +71,12 @@ public class TranslationClassGoogle {
 		}
 	}
 	
+	
+	/**
+	 * Fordert Benutzer auf die Zielsprache einzugeben
+	 * 
+	 * @return Zielsprache
+	 */
 	public static String getTargetLanguage() {
 		
 		System.out.println("Enter the target language (type \"help\" for a list of language often used ISO-639-1-Codes):");
@@ -101,6 +119,12 @@ public class TranslationClassGoogle {
 		}
 	}
 	
+	
+	/**
+	 * Fordert Benutzer auf Text einzugeben, der übersetzt werden soll
+	 * 
+	 * @return Text der übersetzt werden soll
+	 */
 	public static String getInput() {
 		
 		System.out.println("Enter your text and end your input with '/end/' to submit your input:");
@@ -121,6 +145,16 @@ public class TranslationClassGoogle {
 		return userInput;
 	}
 	
+	
+	/**
+	 * Nutzung der Google Cloud Translation API
+	 * Text, Quell-und Zielsprache werden eingegeben
+	 * 
+	 * @param inputString
+	 * @param sourceLanguage
+	 * @param targetLanguage
+	 * @return übersetzter Text
+	 */
 	public static String translateInputString(String inputString, String sourceLanguage, String targetLanguage) {
 		
 		Translate translate = TranslateOptions.getDefaultInstance().getService();

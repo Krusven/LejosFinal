@@ -10,29 +10,15 @@ import plott3r.Roboter;
 
 public class Sketcher {
 	
-	public static void drawLine(Point2D point2d, Point2D point2d2, Roboter roboter) throws RemoteException, InterruptedException {
-		
-		int startX =(int) point2d.getX();
-		int startY =(int) point2d.getY();
-		
-		int endX =(int) point2d2.getX();
-		int endY =(int) point2d2.getY();
-		
-		roboter.moveToPosition(new Position3D(startX, startY, false), 50);
-		roboter.moveToPosition(new Position3D(endX, endY, true), 50);
-		roboter.zAchse.deaktiviere();
-	}
 	
-	public static void drawDot(Point2D point2d, Roboter roboter) throws RemoteException, InterruptedException {
-		
-		int x =(int) point2d.getX();
-		int y =(int) point2d.getY();
-
-		roboter.moveToPosition(new Position3D(x, y, false), 50);
-		roboter.moveToPosition(new Position3D(x, y, true), 50);
-		roboter.zAchse.deaktiviere();
-	}
-	
+	/**
+	 * Geht fertige Koordinatenliste durch und ruft Methode auf um entweder Punkt oder Linien zu zeichnen
+	 * 
+	 * @param coordinateArray
+	 * @param roboter
+	 * @throws RemoteException
+	 * @throws InterruptedException
+	 */
 	public static void drawCoordinateArray(ArrayList<Point2D> coordinateArray, Roboter roboter) throws RemoteException, InterruptedException {
 
 		for(int i = 0;i < coordinateArray.size(); i++) {
@@ -47,5 +33,48 @@ public class Sketcher {
 			}
 		}
 	}
+	
+	
+	/**
+	 * Zeichnet Linie
+	 * 
+	 * @param point2d
+	 * @param point2d2
+	 * @param roboter
+	 * @throws RemoteException
+	 * @throws InterruptedException
+	 */
+	public static void drawLine(Point2D point2d, Point2D point2d2, Roboter roboter) throws RemoteException, InterruptedException {
+		
+		int startX =(int) point2d.getX();
+		int startY =(int) point2d.getY();
+		
+		int endX =(int) point2d2.getX();
+		int endY =(int) point2d2.getY();
+		
+		roboter.moveToPosition(new Position3D(startX, startY, false), 50);
+		roboter.moveToPosition(new Position3D(endX, endY, true), 50);
+		roboter.zAchse.deaktiviere();
+	}
+	
+	
+	/**
+	 * Zeichnen einzelnen Punkt
+	 * @param point2d
+	 * @param roboter
+	 * @throws RemoteException
+	 * @throws InterruptedException
+	 */
+	public static void drawDot(Point2D point2d, Roboter roboter) throws RemoteException, InterruptedException {
+		
+		int x =(int) point2d.getX();
+		int y =(int) point2d.getY();
+
+		roboter.moveToPosition(new Position3D(x, y, false), 50);
+		roboter.moveToPosition(new Position3D(x, y, true), 50);
+		roboter.zAchse.deaktiviere();
+	}
+	
+	
 	
 }

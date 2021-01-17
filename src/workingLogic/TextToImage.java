@@ -14,13 +14,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
-//lol
+
 public class TextToImage {
-	/* - Bold und Schriftgröße neue Breite 
-	 * - Sondersprachen eigenen Font
-	 * - 
-	 */
 	
+
+	/**
+	 * Initialisierungsmethode und ruft methode zum speichern des BufferedImage auf
+	 * 
+	 * @param inputString
+	 * @return Fertiges BufferedImage
+	 * @throws IOException
+	 */
 	public static BufferedImage createImage(String inputString) throws IOException{
         
 		BufferedImage image = createGraphics(inputString);
@@ -29,6 +33,19 @@ public class TextToImage {
         return image;
 	}
 	
+	/**
+	 * Erstellt:
+	 * - BufferedImage mit den richtigen Maßen
+	 * - Graphics2D aus BufferedImage und Font
+	 * 
+	 * Ruft Methode auf um Referenzpixel zu erstellen
+	 * 
+	 * unterscheidet zwischen Zeichen und Wortsprachen
+	 * befreit Ressourcen die von Graphics2D reserviert waren
+	 * 
+	 * @param inputString
+	 * @return Fertiges BufferedImage
+	 */
 	public static BufferedImage createGraphics(String inputString) {
 		
 		BufferedImage bufferedImage = new BufferedImage(160, 195, BufferedImage.TYPE_INT_RGB);
@@ -47,6 +64,12 @@ public class TextToImage {
 	    return bufferedImage;
 	}
 	
+	/**
+	 * Erstellt Referenzpixel (baseY ist die Koordinate der oberen linken Ecke, die sich je nach Fontgröße verschiebt)
+	 * 
+	 * @param bounds
+	 * @return Referenzpixel
+	 */
 	public static double getY(Rectangle2D bounds) {
 		
 	    double ascent = - bounds.getY();
@@ -54,6 +77,15 @@ public class TextToImage {
 	    return baseY;
 	}
 	
+	
+	/**
+	 * Erstellt den Render kontext und die durch Font und Renderkontext definierte Umgebung
+	 * 
+	 * @param font
+	 * @param content
+	 * @param graphics2D
+	 * @return bounds
+	 */
 	public static Rectangle2D getBounds(Font font, String content, Graphics2D graphics2D) {
 		FontRenderContext context = graphics2D.getFontRenderContext();
 		Rectangle2D bounds = font.getStringBounds(content, context);
@@ -61,6 +93,14 @@ public class TextToImage {
 		return bounds;
 	}
 	
+	/**
+	 * Erstellt Grafik und setzt dessen Eigenschaften
+	 * 
+	 * @param font
+	 * @param content
+	 * @param graphics2D
+	 * @return Grafik mit "richtigen" Eigenschaften
+	 */
 	public static Graphics2D prepareGraphics(BufferedImage bufferedImage, Font font) {
 		Graphics2D graphics2D = (Graphics2D)bufferedImage.getGraphics();
 	    graphics2D.setBackground(Color.GRAY);
@@ -71,6 +111,12 @@ public class TextToImage {
 	    return graphics2D;
 	}
 	
+	/**
+	 * Unterscheidet zwischen Sprachen, die auf Wörtern oder Zeichen basieren
+	 * 
+	 * @param inputString
+	 * @return true(=Zeichensprache), false(=Wortsprache)
+	 */
 	public static boolean isLatin(String inputString) {
 		
 		ArrayList<String> languageList = new ArrayList<String>(
@@ -84,17 +130,44 @@ public class TextToImage {
 	    
 	}
 	
+	
+	/**
+	 * Speichert BufferedImage als PNG, um dieses einsehen zu können
+	 * @param bufferedImage
+	 * @throws IOException
+	 */
 	public static void saveImage(BufferedImage bufferedImage) throws IOException {
 		
 		ImageIO.write(bufferedImage, "png", new File("./Image.jpeg"));
 	}
 	
+	
+	/**
+	 * Gibt die Höhe iner Linie zurück (ändert sich je nach Schriftgröße)
+	 * 
+	 * @param font
+	 * @param g
+	 * @return Linienhöhe
+	 */
 	public static int getHeight(Font font, Graphics2D g) {
 		
 		int lineHeight = g.getFontMetrics(font).getHeight();
 		return lineHeight;
 	}
-
+	
+	
+	/**
+	 * Trennt eingegebenen Text nach Leerzeichen, um Wörter nicht in der Mitte zu trennen
+	 * und sorgt dafür, dass diese in den Rahmen passen.
+	 * Falls sie zu breit sind, werden Zeilenumbrüche eingefügt.
+	 * Wird die Höhe des Gesambildes überschritten, wird eingefügt was passt und der Rest des Textes ignoriert
+	 * 
+	 * 
+	 * @param graphics2D
+	 * @param content
+	 * @param font
+	 * @param baseY
+	 */
 	public static void drawLinesAsWords(Graphics2D graphics2D, String content, Font font, double baseY) {
 		
 		int lineHeight = getHeight(font, graphics2D);
@@ -147,6 +220,19 @@ public class TextToImage {
 			}
 		}
 	}
+	
+	
+	/**
+	 * Trennt eingegebenen Text nach Zeichen.
+	 * Bildet aus Zeichen Zeilen sorgt dafür, dass diese in den Rahmen passen.
+	 * Falls sie zu breit sind, werden Zeilenumbrüche eingefügt.
+	 * Wird die Höhe des Gesambildes überschritten, wird eingefügt was passt und der Rest des Textes ignoriert
+	 * 
+	 * @param graphics2D
+	 * @param content
+	 * @param font
+	 * @param baseY
+	 */
 	public static void drawLinesAsCharacters(Graphics2D graphics2D, String content, Font font, double baseY) {
 		int lineHeight = getHeight(font, graphics2D);
 		int leftBorder = 5;
@@ -154,7 +240,7 @@ public class TextToImage {
 		FontMetrics fontMetrics = graphics2D.getFontMetrics(font);
 		String currentContent = "";
 		double leftTopCornerLine = baseY;
-		System.out.println(fontMetrics.stringWidth(content));
+		
 
 		
 		for(int i = 0; i < characterArray.length; i++) {

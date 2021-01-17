@@ -15,37 +15,40 @@ import plott3r.Position3D;
 import plott3r.Roboter;
 
 public class main {
-	static String targetLang = "de";
+	static String targetLang;
 	public static void main(String args[]) throws Throwable {
-//		RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
-//		plott3r.Roboter roboter = new Roboter(remoteev3);
+		//Instanziierung des Roboters
+		RemoteEV3 remoteev3 = new RemoteEV3("10.0.1.1");
+		plott3r.Roboter roboter = new Roboter(remoteev3);
 				
 		try {
-		
-			String translatedText = "哈罗"; //TranslationClassGoogle.translateText();
-			ArrayList<Point2D> myArrayList = CoordinateSearcher.searchForColor(TextToImage.createImage(translatedText));
-			ArrayList<Point2D> myNewArrayListX = CoordinatePrinter.markLineX(myArrayList);
+			//Aufrufen der Übersetzer Methode
+			String translatedText =TranslationClassGoogle.translateText();
 			
-			ArrayList<Point2D> myNewArrayListY = CoordinatePrinter.markLineY(myArrayList);
-			listCoordinates(myNewArrayListX);
-			
-//			Sketcher.drawCoordinateArray(myNewArrayListX, roboter);
-//			System.out.println("\n"+"Startet Horizontal"+"\n");
-//			Sketcher.drawCoordinateArray(myNewArrayListY, roboter);
-//			System.out.println("Fertig");
-			
+			//Methoden die BufferedImage erstellen, Text einfügen und Koordinatenarray erstellen
+			ArrayList<Point2D> coordinateArray = CoordinateSearcher.searchForColor(TextToImage.createImage(translatedText));
+
+			//Erstellt neue Arrays, die Linien enthalten
+			ArrayList<Point2D> arrayLinesX = CoordinatePrinter.markLineX(coordinateArray);
+			ArrayList<Point2D> arrayLinesY = CoordinatePrinter.markLineY(coordinateArray);
+
+			//Koordinaten mit Punkten und Linien werden gezeichnet
+			Sketcher.drawCoordinateArray(arrayLinesX, roboter);
+			Sketcher.drawCoordinateArray(arrayLinesY, roboter);
+
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
 		} finally {
-			//roboter.stop();
-			//roboter.getxAchse().close();
-			//roboter.getyAchse().close();
-			//roboter.getzAchse().close();
+			roboter.stop();
+			roboter.getxAchse().close();
+			roboter.getyAchse().close();
+			roboter.getzAchse().close();
 		}
 		
 		
 	}
+	//Liste aller in Java zugänglichen Fonts
 	public static void listFont() {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		String []fontFamilies = ge.getAvailableFontFamilyNames();
@@ -54,11 +57,13 @@ public class main {
             System.out.println(fontFamilies[i]);
         }
 	}
+	//Um Koorinatenarrays ausdrucken zu können
 	public static void listCoordinates(ArrayList<Point2D> myArrayList) {
 		for(int i = 0; i < myArrayList.size(); i++) {
 			System.out.println(myArrayList.get(i));
 		}
 	}
+	//um in der Translation Klasse die Zielsprache festlegen zu können (Hier als Globale Variable)
 	public static void setTargetLang(String targetLangInput) {
 		targetLang = targetLangInput;
 	}

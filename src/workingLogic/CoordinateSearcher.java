@@ -5,7 +5,12 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class CoordinateSearcher {
-	
+	/**
+	 * Sucht im BufferedImage nach schwarzen Pixeln und gibt diese als Koordinaten Array zurück
+	 * 
+	 * @param bufferedImage
+	 * @return Koordinaten Array
+	 */
 	public static ArrayList<Point2D> searchForColor(BufferedImage bufferedImage) {
 		
 		ArrayList<Point2D> coordinateArray = new ArrayList<Point2D>();
